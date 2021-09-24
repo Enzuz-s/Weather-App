@@ -1,12 +1,13 @@
 import tkinter as tk
 import requests
 import time
+import config
 
 
 def get_weather(canvas):
     city = textField.get()
-    api = "https://api.openweathermap.org/data/2.5/weather?q="+city+\
-          "&units=metric&appid=33a0352b584776a021756fadf8895cfe"
+    api = "https://api.openweathermap.org/data/2.5/weather?q=" + city + \
+          "&units=metric&appid="+config.appid+""
     json_data = requests.get(api).json()
     condition = json_data['weather'][0]['main']
     temp = json_data['main']['temp']
@@ -15,13 +16,14 @@ def get_weather(canvas):
     pressure = json_data['main']['pressure']
     humidity = json_data['main']['humidity']
     wind = json_data['wind']['speed']
-    sunrise = time.strftime('%H:%M:%S', time.gmtime(json_data['sys']['sunrise'] - 7200))
-    sunset = time.strftime('%H:%M:%S', time.gmtime(json_data['sys']['sunset'] - 7200))
+    sunrise = time.strftime('%H:%M:%S', time.gmtime(json_data['sys']['sunrise'] - 3600))
+    sunset = time.strftime('%H:%M:%S', time.gmtime(json_data['sys']['sunset'] - 3600))
 
-    final_info = condition + "\n" + str(temp) + "°C"
-    final_data = "\n" + "Min Temp: " + str(min_temp) + "°C" + "\n" + "Max Temp: " + str(
-        max_temp) + "°C" + "\n" + "Pressure: " + str(pressure) + "\n" + "Humidity: " + str(
-        humidity) + "\n" + "Wind Speed: " + str(wind) + "\n" + "Sunrise: " + sunrise + "\n" + "Sunset: " + sunset
+    final_info = condition + "\n" + str(temp) + " °C"
+    final_data = "\n" + "Min Temp: " + str(min_temp) + " °C" + "\n" + "Max Temp: " + str(
+        max_temp) + " °C" + "\n" + "Pressure: " + str(pressure) + " hPa" + "\n" + "Humidity: " + str(
+        humidity) + "%" + "\n" + "Wind Speed: " + str(wind) + " m/s" + "\n" + \
+                    "Sunrise: " + sunrise + "\n" + "Sunset: " + sunset
     label1.config(text=final_info)
     label2.config(text=final_data)
 
@@ -32,7 +34,6 @@ canvas.title("Weather App")
 canvas.configure(background="light grey")
 f = ("Bradley Hand ITC", 20, "bold")
 t = ("Baskerville Old Face", 35)
-
 
 textField = tk.Entry(canvas, justify='center', bg='light grey', width=20, font=t, fg="black")
 textField.pack(pady=20)
