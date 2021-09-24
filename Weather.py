@@ -7,7 +7,7 @@ import config
 def get_weather(canvas):
     city = textField.get()
     api = "https://api.openweathermap.org/data/2.5/weather?q=" + city + \
-          "&units=metric&appid="+config.appid+""
+          "&units=metric&appid=" + config.appid + ""
     json_data = requests.get(api).json()
     condition = json_data['weather'][0]['main']
     temp = json_data['main']['temp']
