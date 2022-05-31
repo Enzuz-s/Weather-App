@@ -22,8 +22,8 @@ def get_weather(canvas):
     final_info = condition + "\n" + str(temp) + " °C"
     final_data = "\n" + "Min Temp: " + str(min_temp) + " °C" + "\n" + "Max Temp: " + str(
         max_temp) + " °C" + "\n" + "Pressure: " + str(pressure) + " hPa" + "\n" + "Humidity: " + str(
-        humidity) + "%" + "\n" + "Wind Speed: " + str(wind) + " m/s" + "\n" + \
-                    "Sunrise: " + sunrise + "\n" + "Sunset: " + sunset
+        humidity) + "%" + "\n" + "Wind Speed: " + str(wind) +\
+                 " m/s" + "\n" + "Sunrise: " + sunrise + "\n" + "Sunset: " + sunset
     label1.config(text=final_info)
     label2.config(text=final_data)
 
@@ -35,13 +35,14 @@ canvas.configure(background="light grey")
 f = ("Bradley Hand ITC", 20, "bold")
 t = ("Baskerville Old Face", 35)
 
-textField = tk.Entry(canvas, justify='center', bg='light grey', width=20, font=t, fg="black")
+back_color = 'light grey'
+textField = tk.Entry(canvas, justify='center', bg=back_color, width=20, font=t, fg="black")
 textField.pack(pady=20)
 textField.focus()
 textField.bind('<Return>', get_weather)
 
-label1 = tk.Label(canvas, font=t, fg="black", bg='light grey', pady=10)
+label1 = tk.Label(canvas, font=t, fg="black", bg=back_color, pady=10)
 label1.pack()
-label2 = tk.Label(canvas, bg='light grey', font=f, fg="black")
+label2 = tk.Label(canvas, bg=back_color, font=f, fg="black")
 label2.pack()
 canvas.mainloop()
