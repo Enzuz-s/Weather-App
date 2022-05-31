@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as a:
 
 setuptools.setup(
     name="Weather-app-Enzuz-s",
-    version="1.0",
+    version="1.1",
     author="Enzuz-s",
     description="A small Weather App",
     url="https://github.com/Enzuz-s/Weather-App",
